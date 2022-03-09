@@ -137,7 +137,8 @@ class ServiciosPublicosController extends Controller
                 'alert-type' => 'error'
             ];
         }
-        return response()->json($message);
+        //return response()->json($message);
+        return redirect()->route('serviciosPublicos.index');
     }
 
     /**

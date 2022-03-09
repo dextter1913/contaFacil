@@ -15,17 +15,17 @@ class CreateServiciosPublicosTable extends Migration
     {
         Schema::create('servicios_publicos', function (Blueprint $table) {
             $table->id();
-            $table->integer('numeroContrato');
-            $table->integer('numeroFactura');
-            $table->string('referenciaPago');
-            $table->date('fechaPago');
-            $table->date('fechaVencimiento');
-            $table->date('fechaPagoReal');
-            $table->string('pdf');
-            $table->double('energia');
-            $table->double('acueducto');
-            $table->double('gas');
-            $table->double('otros');
+            $table->integer('numeroContrato')->nullable(true);
+            $table->integer('numeroFactura')->nullable(true);
+            $table->string('referenciaPago')->nullable(true);
+            $table->date('fechaPago')->nullable(true);
+            $table->date('fechaVencimiento')->nullable(true);
+            $table->date('fechaPagoReal')->nullable(true);
+            $table->string('pdf')->nullable(true);
+            $table->double('energia')->nullable(true);
+            $table->double('acueducto')->nullable(true);
+            $table->double('gas')->nullable(true);
+            $table->double('otros')->nullable(true);
             $table->timestamps();
         });
     }

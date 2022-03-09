@@ -34,3 +34,7 @@ Route::get('/', function () {
 
 // Route::get('/serviciosPublicos/create', [ServiciosPublicosController::class, 'create']);
 Route::resource('/serviciosPublicos', ServiciosPublicosController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
