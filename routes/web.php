@@ -19,7 +19,7 @@ use App\Http\Controllers\ServiciosPublicosController;
  * ACCEDIENDO A LA VIEW POR DEFECTO DE LARAVEL
  */
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -33,8 +33,26 @@ Route::get('/', function () {
 // });
 
 // Route::get('/serviciosPublicos/create', [ServiciosPublicosController::class, 'create']);
-Route::resource('/serviciosPublicos', ServiciosPublicosController::class);
 
+/**
+ * OBLIGANDO A QUE TODO ESTE AUTENTICADO EN EL CONTROLADOR ServiciosPublicosController
+ */
+Route::resource('/serviciosPublicos', ServiciosPublicosController::class)->middleware('auth');
+
+
+/**
+ * VIEWS DEL CONTROLADOR AuthController
+ */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/**
+ * VIEWS QUE REDIRECCIONA HOME A EL CONTROLADOR SERVICIOSPUBLICOSCONTROLLER
+ */
+Route::get('/home', [ServiciosPublicosController::class, 'index'])->name('home');
+
+/**
+ * VIEWS DEL CONTROLADOR ServiciosPublicosController
+ */
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [ServiciosPublicosController::class, 'index'])->name('home');
+});

@@ -20,4 +20,4 @@
 <input type="text" class="form-control" value="{{ isset($serviciosPublicos->gas) ? $serviciosPublicos->gas: '' }}" name="gas" id="gas"><br>
 <label for="otros">otros cobros:</label>
 <input type="text" class="form-control" value="{{ isset($serviciosPublicos->otros) ? $serviciosPublicos->otros: '' }}" name="otros" id="otros"><br>
-<input type="submit" value="Enviar">
+<input type="submit" value="Ok" class="btn btn-outline-success m-3">
