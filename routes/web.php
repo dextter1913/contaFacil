@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\serviciosPublicos;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiciosPublicosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * ACCEDIENDO A LA VIEW POR DEFECTO DE LARAVEL
+ */
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/**
+ * VIEWS DEL CONTROLADOR serviciosPublicosController
+ * Route::get('/serviciosPublicos', [serviciosPublicos::class, 'index']);
+ */
+
+// Route::get('/serviciosPublicos', function () {
+//     return view('serviciosPublicos.create');
+// });
+
+// Route::get('/serviciosPublicos/create', [ServiciosPublicosController::class, 'create']);
+
+Route::resources([
+    'serviciosPublicos' => ServiciosPublicosController::class,
+]);
