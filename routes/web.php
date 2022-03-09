@@ -33,7 +33,4 @@ Route::get('/', function () {
 // });
 
 // Route::get('/serviciosPublicos/create', [ServiciosPublicosController::class, 'create']);
-
-Route::resources([
-    'serviciosPublicos' => ServiciosPublicosController::class,
-]);
+Route::resource('/serviciosPublicos', ServiciosPublicosController::class);

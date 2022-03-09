@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\serviciosPublicos;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\This;
 
 class ServiciosPublicosController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * INDEX POR DEFECTO DE serviciosPublicos MUESTRA EL INDEX
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -88,25 +90,54 @@ class ServiciosPublicosController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * CONTROLADOR DE LA VISTA DE EDICION DE FACTURA
+     * 
      * @param  \App\Models\serviciosPublicos  $serviciosPublicos
      * @return \Illuminate\Http\Response
      */
-    public function edit(serviciosPublicos $serviciosPublicos)
+    public function edit($id)
     {
-        return view('serviciosPublicos.edit');
+        $serviciosPublicos = serviciosPublicos::findOrFail($id);
+        return view('serviciosPublicos.edit', compact('serviciosPublicos'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
+     * CONTROLLER QUE HACE EL UPDATE DE LOS DATOS DE LA FACTURA
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\serviciosPublicos  $serviciosPublicos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, serviciosPublicos $serviciosPublicos)
+    public function update(Request $request, $id)
     {
-        //
+        if (isset($request['_token'])) {
+            if ($request->hasFile('pdf')) {
+                $datosFactura = $request->except('_token', '_method');
+                $datosFactura['pdf'] = $request->file('pdf')->store('public/pdfFacturas');
+                return response()->json($datosFactura);
+            } else {
+                $datosFactura = $request->except('_token', '_method', 'pdf');
+            }
+            $response = serviciosPublicos::where('id', '=', $id)->update($datosFactura);
+            if ($response == true) {
+                $message = [
+                    'message'    => 'Factura actualizada correctamente',
+                    'alert-type' => 'success'
+                ];
+            } else {
+                $message = [
+                    'message'    => 'Error al actualizar la factura',
+                    'alert-type' => 'error'
+                ];
+            }
+        } else {
+            $message = [
+                'message'    => 'Error token invalido',
+                'alert-type' => 'error'
+            ];
+        }
+        return response()->json($message);
     }
 
     /**

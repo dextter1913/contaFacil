@@ -38,7 +38,11 @@
                         <td>{{ $Factura->otros }}</td>
                         <td>{{ $Factura->created_at }}</td>
                         <td>{{ $Factura->updated_at }}</td>
-                        <td>Editar |
+                        <td>
+                            <a href="{{ url('/serviciosPublicos/'.$Factura->id.'/edit') }}">
+                                Editar
+                            </a>
+                            |
                             <form action="{{ url('/serviciosPublicos/'.$Factura->id) }}" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
