@@ -10,15 +10,18 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap/css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{{ asset('main/css/styles.css') }}">
 </head>
 
 <body>
@@ -87,5 +90,13 @@
         </main>
     </div>
 </body>
+<!-- Script bootstrap -->
+<script src="{{ asset('bootstrap/js/app.js') }}" defer></script>
+
+<!-- Script Font Awesome -->
+<script src="{{ asset('fontawesome/js/all.min.js') }}" defer></script>
+
+<!-- Scripts main -->
+<script src="{{ asset('main/js/functions.js') }}" defer></script>
 
 </html>
