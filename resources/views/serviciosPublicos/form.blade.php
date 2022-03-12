@@ -1,3 +1,4 @@
+<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 <label for="numeroContrato">Numero de Contrato:</label>
 <input type="text" class="form-control" value="{{ isset($serviciosPublicos->numeroContrato) ? $serviciosPublicos->numeroContrato : '' }}" name="numeroContrato" id="numeroContrato"><br>
 <label for="numeroFactura">Numero de Factura:</label>
