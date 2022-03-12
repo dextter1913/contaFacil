@@ -7,6 +7,7 @@
             <form action="{{ url('/serviciosPublicos') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @include('serviciosPublicos.form')
+                <input type="submit" value="Ok" class="btn btn-outline-success m-3">
             </form>
         </div>
         <div class="col-12 col-sm-1 col-md-2 col-lg-3"></div>
