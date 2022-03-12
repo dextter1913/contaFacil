@@ -54,24 +54,24 @@ class ServiciosPublicosController extends Controller
                 if ($response == true) {
                     $message = [
                         'message'    => 'Factura creada correctamente',
-                        'alert-type' => 'success'
+                        'status' => '200'
                     ];
                 } else {
                     $message = [
                         'message'    => 'Error al crear la factura',
-                        'alert-type' => 'error'
+                        'status' => 'error'
                     ];
                 }
             } else {
                 $message = [
                     'message'    => 'Error al Guardar el PDF',
-                    'alert-type' => 'error'
+                    'status' => 'error'
                 ];
             }
         } else {
             $message = [
                 'message'    => 'Error token invalido',
-                'alert-type' => 'error'
+                'status' => 'error'
             ];
         }
         return response()->json($message);
@@ -123,22 +123,22 @@ class ServiciosPublicosController extends Controller
             if ($response == true) {
                 $message = [
                     'message'    => 'Factura actualizada correctamente',
-                    'alert-type' => 'success'
+                    'status' => '200'
                 ];
             } else {
                 $message = [
                     'message'    => 'Error al actualizar la factura',
-                    'alert-type' => 'error'
+                    'status' => 'error'
                 ];
             }
         } else {
             $message = [
                 'message'    => 'Error token invalido',
-                'alert-type' => 'error'
+                'status' => 'error'
             ];
         }
-        //return response()->json($message);
-        return redirect()->route('serviciosPublicos.index');
+        return response()->json($message);
+        //return redirect()->route('serviciosPublicos.index');
     }
 
     /**
@@ -155,12 +155,12 @@ class ServiciosPublicosController extends Controller
         if ($response == true) {
             $message = [
                 'message'    => 'Factura eliminada correctamente',
-                'alert-type' => 'success'
+                'status' => '200'
             ];
         } else {
             $message = [
                 'message'    => 'Error al eliminar la factura',
-                'alert-type' => 'error'
+                'status' => 'error'
             ];
         }
         return response()->json($message);

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="row text-center">
+        <h2>Facturas</h2>
+    </div>
     <div class="row">
         <div class="col-12 col-sm-1 col-md-2 col-lg-1"></div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-10 table-responsive border shadow-lg">
@@ -43,12 +46,14 @@
                         <td>{{ $Factura->updated_at }}</td>
                         <td>
                             <a href="{{ url('/serviciosPublicos/'.$Factura->id.'/edit') }}" class="btn btn-primary">
-                                Editar
+                            <span class="fa-solid fa-pencil"></span>
                             </a>
                             <form action="{{ url('/serviciosPublicos/'.$Factura->id) }}" method="post">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <input type="submit" class="btn btn-danger" onclick="return confirm('Seguro quieres Borrar?')" value="Borrar">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro quieres Borrar?')">
+                                <span class="fa-solid fa-trash-can"></span>
+                            </button>
                             </form>
                         </td>
                     </tr>
